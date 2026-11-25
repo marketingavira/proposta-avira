@@ -7,159 +7,128 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* VOICE: calma, segura, boutique — ferramenta de mesa de vendas, sem barulho
-   IDEA: a folha de proposta que o corretor entrega ao cliente, montada ao vivo
-   PICTURE: o valor da proposta grande, com a barra do fluxo (entrada/mensais/reforços/chaves)
-   COLOUR and TYPE: paleta Ávira — off-white, marrom #3E0F00, caramelo, rosé, laranja só no destaque; Montserrat light
-   LAYOUT: resultado no topo (fixo ao rolar no celular), campos em coluna calma, fluxo e texto pronto para WhatsApp */
+/* VOICE: calma, limpa, boutique — ferramenta de mesa de vendas
+   IDEA: a folha de proposta montada ao vivo, sempre fechando em 100%
+   PICTURE: o valor da proposta grande e o fluxo em linhas simples
+   COLOUR and TYPE: off-white, marrom #3E0F00, caramelo nos detalhes; Montserrat
+   LAYOUT: resumo ao lado (no celular, no topo), campos em uma coluna calma */
 :root{color-scheme:light dark;
---bg:light-dark(#f6f2ee,#1e0a03);--card:light-dark(#fffdfb,#2a1209);--ink:light-dark(#3e0f00,#f1e8e2);
---soft:light-dark(#8a6a5c,#c9b3a8);--line:light-dark(#e4d9d2,#4a2618);--car:#955b1f;--rose:#dac6c6;--or:#f46c1e;
---b1:light-dark(#3e0f00,#f1e8e2);--b2:#955b1f;--b3:#dac6c6;--b4:#f46c1e}
+--bg:light-dark(#f7f4f1,#1c0a04);--card:light-dark(#ffffff,#26110a);--ink:light-dark(#3e0f00,#f1e8e2);
+--soft:light-dark(#8a6a5c,#c2aca1);--line:light-dark(#ece3dd,#3f2116);--car:#955b1f;--on:light-dark(#3e0f00,#f1e8e2);--onInk:light-dark(#fff,#1c0a04)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Montserrat,system-ui,sans-serif;font-weight:400;overflow-x:clip}
-.wrap{max-width:1180px;margin:0 auto;padding:clamp(20px,4vw,48px) max(4vw,16px)}
-h1{font-weight:300;font-size:clamp(28px,4vw,40px);line-height:1.05;margin:0 0 6px;text-wrap:balance}
-.sub{color:var(--soft);margin:0 0 24px;font-size:15px}
-.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:28px;align-items:start}
-.res{position:sticky;top:16px;background:var(--b1);color:var(--bg);border-radius:20px;padding:26px;order:2}
-.res .lab{font-size:13px;opacity:.75}
-.big{font-weight:300;font-size:clamp(34px,6vw,54px);line-height:1.05;white-space:nowrap;margin:2px 0 4px}
-.tab{font-size:14px;opacity:.8}.tab s{opacity:.7}
-.bar{display:flex;height:14px;border-radius:7px;overflow:hidden;margin:20px 0 14px;background:rgba(255,255,255,.12)}
-.bar i{display:block;height:100%;transition:width .3s}
-.leg{display:grid;gap:10px;margin:0;padding:0;list-style:none}
-.leg li{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:baseline;font-size:15px}
-.leg b{font-weight:500;white-space:nowrap;text-align:right}
-.dot{width:12px;height:12px;border-radius:3px;transform:translateY(1px)}
-.leg small{display:block;opacity:.7;font-size:13px}
-.warn{margin-top:16px;padding:12px 14px;border-radius:12px;background:var(--or);color:#fff;font-size:14px;display:none}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Montserrat,system-ui,sans-serif;overflow-x:clip}
+.wrap{max-width:1120px;margin:0 auto;padding:clamp(20px,4vw,44px) max(4vw,16px)}
+h1{font-weight:300;font-size:clamp(26px,3.6vw,36px);line-height:1.1;margin:0 0 4px}
+.sub{color:var(--soft);margin:0 0 24px;font-size:14px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:24px;align-items:start}
+.form{display:grid;gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.card h2{font-size:15px;font-weight:500;margin:0 0 14px}
+.res{position:sticky;top:16px}
+.res .un{font-size:14px;color:var(--soft)}
+.lab{font-size:13px;color:var(--soft);margin-top:14px}
+.big{font-weight:300;font-size:clamp(32px,5vw,44px);line-height:1.1;white-space:nowrap}
+.tab{font-size:13px;color:var(--soft)}.tab s{opacity:.8}
+.lines{list-style:none;margin:18px 0 0;padding:0}
+.lines li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+.lines li span small{display:block;color:var(--soft);font-size:13px}
+.lines li b{font-weight:500;text-align:right;white-space:nowrap}.lines li b small{display:block;font-weight:400;color:var(--soft);font-size:13px}
+.warn{margin-top:14px;padding:10px 12px;border-radius:10px;border:1px solid #f46c1e;color:light-dark(#a3420c,#ffb38a);font-size:13px;display:none}
 .warn.on{display:block}
-.form{display:grid;gap:18px;order:1}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
-.card h2{font-size:17px;font-weight:500;margin:0 0 14px}
-.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.mt{margin-top:12px}
 label{display:grid;gap:5px;font-size:13px;color:var(--soft)}
-input,select,textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px;width:100%}
-input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--car);outline-offset:1px}
+input,select{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px;width:100%}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--car);outline-offset:1px}
 .seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .seg button{flex:1;border:0;background:transparent;color:var(--ink);font:inherit;font-size:14px;min-height:42px;cursor:pointer}
-.seg button.on{background:var(--car);color:#fff}
-.hint{font-size:13px;color:var(--soft);margin:8px 0 0}
-.btn{font:inherit;font-weight:500;border:0;border-radius:12px;min-height:48px;padding:0 20px;cursor:pointer;background:var(--or);color:#fff;width:100%;margin-top:18px}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);width:auto;margin:0;min-height:44px}
-.res .btn{margin-top:20px}.res .btn+.btn{margin-top:10px}
-.btn.ghost2{background:transparent;color:inherit;border:1px solid rgba(255,255,255,.35)}
-:root[data-theme=dark] .btn.ghost2{border-color:rgba(62,15,0,.35)}
-.btn:disabled{opacity:.5;cursor:wait}.pmsg{font-size:13px;opacity:.85;margin:10px 0 0}.pmsg:empty{display:none}.res .btn.ghost2{margin-top:10px;background:transparent;color:var(--bg);border:1px solid rgba(255,255,255,.35)}
-.pmsg{font-size:13px;opacity:.8;margin:10px 0 0;min-height:1em}
-details{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 20px}
-summary{cursor:pointer;font-weight:500;min-height:28px}
-.units{display:grid;gap:10px;margin-top:14px}
-.unit{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,.9fr) 44px;gap:8px;align-items:end}
-.x{border:1px solid var(--line);background:transparent;color:var(--soft);border-radius:10px;height:44px;cursor:pointer;font-size:18px}
-pre{white-space:pre-wrap;font:14px/1.5 Montserrat,sans-serif;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;margin:0;color:var(--ink)}
-.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--car);color:#fff;padding:10px 18px;border-radius:20px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
-.toast.on{opacity:1}
-.note{font-size:13px;color:var(--soft);margin-top:10px}
-@media(max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}.res{order:0;position:relative;top:0}}
-@media(max-width:520px){.res{padding:20px}}
-.chk{display:flex;gap:10px;align-items:center;font-size:15px;color:var(--ink);min-height:44px;cursor:pointer}
+.seg button.on{background:var(--on);color:var(--onInk)}
+.chk{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--ink);min-height:44px;cursor:pointer}
 .chk input{width:20px;height:20px;min-height:0;accent-color:var(--car)}
-.info{font-size:13px;color:var(--soft);margin:10px 0 0}
-.link{background:none;border:0;color:var(--car);font:inherit;font-size:14px;font-weight:500;cursor:pointer;padding:8px 0;min-height:44px;text-decoration:underline}
-.res .un{font-size:14px;opacity:.85;margin-bottom:14px}
-@media(prefers-reduced-motion:reduce){.bar i{transition:none}}
+.hint{font-size:13px;color:var(--soft);margin:8px 0 0}.hint:empty{display:none}
+.pay{display:grid;gap:0}
+.pr{padding:14px 0;border-top:1px solid var(--line)}.pr:first-child{border-top:0;padding-top:0}
+.ph{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:8px}
+.ph strong{font-weight:500;font-size:15px}.ph span{font-size:13px;color:var(--soft);text-align:right}
+.pin{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:10px}
+.pin label{position:relative}
+.tot{display:flex;justify-content:space-between;padding-top:12px;border-top:1px solid var(--line);font-size:14px;font-weight:500}
+.btn{font:inherit;font-weight:500;border:0;border-radius:12px;min-height:48px;padding:0 20px;cursor:pointer;background:var(--on);color:var(--onInk);width:100%;margin-top:18px}
+.btn.out{background:transparent;color:var(--ink);border:1px solid var(--line);margin-top:10px}
+.btn:disabled{opacity:.5;cursor:wait}
+.link{background:none;border:0;color:var(--car);font:inherit;font-size:14px;font-weight:500;cursor:pointer;padding:10px 0 0;min-height:40px;text-decoration:underline}
+details summary{cursor:pointer;font-size:15px;font-weight:500;min-height:28px}
+pre{white-space:pre-wrap;font:14px/1.5 Montserrat,sans-serif;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0 0;color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--on);color:var(--onInk);padding:10px 18px;border-radius:20px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+@media(max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}.res{position:relative;top:0;order:-1}}
+@media(prefers-reduced-motion:reduce){.toast{transition:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>Proposta na hora</h1>
-  <p class="sub" id="sub">Escolha a unidade — a condição da tabela vem pronta, e você ajusta o que negociar.</p>
+  <p class="sub" id="sub"></p>
 
   <div class="grid">
-    <aside class="res" aria-live="polite">
-      <div class="un" id="rUn"></div>
-      <div class="lab">Valor da proposta</div>
-      <div class="big" id="rFinal">R$ 0</div>
-      <div class="tab" id="rTab"></div>
-      <div class="bar" id="rBar"></div>
-      <ul class="leg" id="rLeg"></ul>
-      <div class="warn" id="rWarn"></div>
-      <button class="btn" id="pdf">Gerar PDF da proposta</button>
-      <button class="btn ghost2" id="copy">Copiar para WhatsApp</button>
-      <p class="pmsg" id="pmsg"></p>
-    </aside>
-
     <div class="form">
       <section class="card">
         <h2>Unidade</h2>
         <div class="seg" id="empSeg"></div>
-        <label style="margin-top:12px">Unidade<select id="unit"></select></label>
-        <div class="row" style="margin-top:6px">
+        <label class="mt">Unidade<select id="unit"></select></label>
+        <div class="row">
           <label class="chk"><input type="checkbox" id="vaga"><span id="vagaL">Vaga extra</span></label>
           <label class="chk"><input type="checkbox" id="hobby"><span id="hobbyL">Hobby box</span></label>
         </div>
-        <p class="info" id="unInfo"></p>
+        <p class="hint" id="unInfo"></p>
       </section>
 
       <section class="card">
-        <h2>Desconto e entrada</h2>
-        <div class="row">
-          <label>Desconto (%)<input id="desc" inputmode="decimal"></label>
-          <label>Entrada
-            <div class="seg" id="entTipo"><button data-v="pct">%</button><button data-v="rs">R$</button></div>
-          </label>
+        <h2>Condição de pagamento</h2>
+        <label>Desconto (%)<input id="desc" inputmode="decimal"></label>
+        <div class="pay mt">
+          <div class="pr">
+            <div class="ph"><strong>Entrada</strong><span id="dE"></span></div>
+            <div class="pin"><label>%<input id="pE" inputmode="decimal"></label><label>R$<input id="vE" inputmode="decimal"></label></div>
+            <label class="mt">Dividida em<select id="entParc"><option value="1">1x (no ato)</option><option value="2">2x</option><option value="3">3x</option><option value="4">4x</option><option value="5">5x</option><option value="6">6x</option></select></label>
+          </div>
+          <div class="pr">
+            <div class="ph"><strong>Mensais</strong><span id="dM"></span></div>
+            <div class="pin"><label>%<input id="pM" inputmode="decimal"></label><label>R$<input id="vM" inputmode="decimal"></label></div>
+            <div class="row mt"><label>Nº de mensais<input id="qtdM" inputmode="numeric"></label><label>1ª mensal<select id="inicio"></select></label></div>
+          </div>
+          <div class="pr">
+            <div class="ph"><strong>Reforços</strong><span id="dR"></span></div>
+            <div class="pin"><label>%<input id="pR" inputmode="decimal"></label><label>R$<input id="vR" inputmode="decimal"></label></div>
+            <div class="row mt"><label>Nº de reforços<input id="qtdR" inputmode="numeric"></label><label>1º reforço<select id="ref1"></select></label><label>A cada (meses)<input id="refInt" inputmode="numeric"></label></div>
+          </div>
+          <div class="pr">
+            <div class="ph"><strong>Saldo nas chaves</strong><span id="dC"></span></div>
+            <div class="pin"><label>%<input id="pC" inputmode="decimal"></label><label>R$<input id="vC" inputmode="decimal"></label></div>
+          </div>
+          <div class="tot"><span>Total</span><span id="tot"></span></div>
         </div>
-        <div class="row" style="margin-top:12px">
-          <label id="entLab">Entrada (%)<input id="ent" inputmode="decimal"></label>
-          <label>Entrada dividida em<select id="entParc"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>Mensais e reforços</h2>
-        <div class="row">
-          <label>1ª mensal<input id="inicio" type="month"></label>
-          <label>Nº de mensais<input id="qtdM" inputmode="numeric"></label>
-        </div>
-        <div class="row" style="margin-top:12px">
-          <label>Nº de reforços<input id="qtdR" inputmode="numeric"></label>
-          <label>Reforços — total (%)<input id="refPct" inputmode="decimal"></label>
-        </div>
-        <div class="row" style="margin-top:12px">
-          <label>1º reforço<input id="ref1" type="month"></label>
-          <label>Intervalo (meses)<input id="refInt" inputmode="numeric"></label>
-        </div>
-        <p class="hint">A mensal fecha com o que sobra depois de entrada, reforços e chaves.</p>
-      </section>
-
-      <section class="card">
-        <h2>Chaves e condições</h2>
-        <div class="row">
-          <label>Saldo nas chaves (%)<input id="chPct" inputmode="decimal"></label>
-        </div>
+        <p class="hint">Ao mudar uma parte, as outras se ajustam e o total fica sempre em 100%. Mexeu na entrada, ajusta o saldo nas chaves; mexeu nas chaves, ajusta a entrada.</p>
         <button class="link" id="reset">Voltar à condição da tabela</button>
       </section>
 
       <section class="card">
-        <h2>Proponente</h2>
+        <h2>Cliente</h2>
         <div class="row">
           <label>Nome do cliente<input id="cliente" autocomplete="off"></label>
           <label>Telefone<input id="fone" inputmode="tel" autocomplete="off"></label>
         </div>
-        <div class="row" style="margin-top:12px">
+        <div class="row mt">
           <label>Corretor (opcional)<input id="corNome" autocomplete="off"></label>
           <label>Imobiliária (opcional)<input id="corImob" autocomplete="off"></label>
         </div>
-        <p class="hint">O telefone não fica salvo no aparelho.</p>
       </section>
 
       <section class="card">
         <h2>Proposta</h2>
         <label>Proposta válida até<input id="valid" type="date" required></label>
-        <div class="row" style="margin-top:12px">
+        <div class="row mt">
           <label>Feita e enviada por<input id="resp"></label>
           <label>Cargo<input id="cargo"></label>
         </div>
@@ -167,11 +136,23 @@ pre{white-space:pre-wrap;font:14px/1.5 Montserrat,sans-serif;background:var(--bg
         <p class="hint" id="pmsg2"></p>
       </section>
 
-      <section class="card">
-        <h2>Texto para WhatsApp</h2>
+      <details class="card">
+        <summary>Texto para WhatsApp</summary>
         <pre id="txt"></pre>
-      </section>
+      </details>
     </div>
+
+    <aside class="card res" aria-live="polite">
+      <div class="un" id="rUn"></div>
+      <div class="lab">Valor da proposta</div>
+      <div class="big" id="rFinal">R$ 0</div>
+      <div class="tab" id="rTab"></div>
+      <ul class="lines" id="rLines"></ul>
+      <div class="warn" id="rWarn"></div>
+      <button class="btn" id="pdf">Gerar PDF da proposta</button>
+      <button class="btn out" id="copy">Copiar para WhatsApp</button>
+      <p class="hint" id="pmsg"></p>
+    </aside>
   </div>
 </div>
 <div class="toast" id="toast">Copiado ✓</div>
@@ -736,8 +717,8 @@ const T=window.TABELAS||{};
 const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:2});
 const num=s=>{s=String(s??'').replace(/[^\d,.-]/g,'');if(s.includes(','))s=s.replace(/\./g,'').replace(',','.');const n=parseFloat(s);return isNaN(n)?0:n};
 const fmtIn=v=>v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
-const pct=v=>v.toLocaleString('pt-BR',{maximumFractionDigits:2})+'%';
-const pIn=v=>String(v).replace('.',',');
+const pct=v=>(Math.round(v*100)/100).toLocaleString('pt-BR',{maximumFractionDigits:2})+'%';
+const pIn=v=>(Math.round(v*100)/100).toLocaleString('pt-BR',{maximumFractionDigits:2,useGrouping:false});
 const MES=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
 const ym=s=>{const[y,m]=(s||'').split('-').map(Number);return{y,m}};
 const addM=(s,n)=>{const{y,m}=ym(s);const t=y*12+(m-1)+n;return Math.floor(t/12)+'-'+String(t%12+1).padStart(2,'0')};
@@ -747,148 +728,167 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 
 const now=new Date(),p2=v=>String(v).padStart(2,'0');
 const nextM=addM(now.getFullYear()+'-'+p2(now.getMonth()+1),1);
-const EK=Object.keys(T);
+const EK=Object.keys(T),PK=['pE','pM','pR','pC'];
 
-let S;try{S=JSON.parse(localStorage.getItem('avira-prop2'))}catch(e){}
-S={emp:EK[0],un:'',vaga:false,hobby:false,desc:0,entTipo:'pct',ent:10,entParc:'1',inicio:nextM,qtdM:0,qtdR:0,refPct:0,ref1:nextM,refInt:12,chPct:50,obs:'',cliente:'',corNome:'',corImob:'',resp:'Felipe Maiberg',cargo:'Gerente Comercial',...(S||{}),valid:'',fone:''};
+let S;try{S=JSON.parse(localStorage.getItem('avira-prop3'))}catch(e){}
+S={emp:EK[0],un:'',vaga:false,hobby:false,desc:0,pE:10,pM:10,pR:20,pC:60,entParc:'1',inicio:nextM,qtdM:0,qtdR:0,ref1:nextM,refInt:12,cliente:'',corNome:'',corImob:'',resp:'Felipe Maiberg',cargo:'Gerente Comercial',...(S||{}),valid:'',fone:''};
 if(!T[S.emp])S.emp=EK[0];
 if(!S.resp){S.resp='Felipe Maiberg';S.cargo='Gerente Comercial'}
-if(S.inicio<nextM)S.inicio=nextM;
 const E=()=>T[S.emp];
 const U=()=>E().units.find(u=>u.n===S.un)||E().units[0];
-const save=()=>{try{const{fone,valid,doc,email,corretor,imob,...K}=S;localStorage.setItem('avira-prop2',JSON.stringify(K))}catch(e){}};
+const save=()=>{try{const{fone,valid,...K}=S;localStorage.setItem('avira-prop3',JSON.stringify(K))}catch(e){}};
 
 function refAuto(){const i=S.qtdR?Math.max(1,Math.floor(S.qtdM/S.qtdR)):12;S.refInt=i;S.ref1=addM(S.inicio,i-1)}
-function padrao(){const e=E();S.desc=0;S.entTipo='pct';S.ent=e.ent;S.entParc='1';S.inicio=nextM;
-  S.qtdM=Math.max(0,diff(S.inicio,e.entrega));S.qtdR=e.qR;S.refPct=e.ref;S.chPct=e.ch;refAuto()}
-if(!S.qtdM&&!S.qtdR)padrao();
+function padrao(){const e=E();S.desc=0;S.entParc='1';S.inicio=nextM;S.qtdM=Math.max(0,diff(S.inicio,e.entrega));S.qtdR=e.qR;
+  S.pE=e.ent;S.pR=e.ref;S.pC=e.ch;S.pM=Math.max(0,100-e.ent-e.ref-e.ch);refAuto()}
+if(S.inicio<nextM||!S.qtdM&&!S.qtdR)padrao();
 if(!E().units.some(u=>u.n===S.un))S.un=E().units[0].n;
+
+/* equilíbrio: o total fica sempre em 100% */
+function setPct(k,v){
+  v=Math.max(0,Math.min(100,v));let d=v-S[k];S[k]=v;
+  const ord=(k==='pC'?['pE','pM','pR']:['pC','pM','pR','pE']).filter(x=>x!==k&&!(x==='pM'&&!S.qtdM&&d<0)&&!(x==='pR'&&!S.qtdR&&d<0));
+  if(d<0){S[ord[0]]+=-d}
+  else{for(const a of ord){const t=Math.min(d,S[a]);S[a]-=t;d-=t;if(d<=1e-9)break}if(d>1e-9)S[k]-=d}
+}
+
+function calc(){
+  const e=E(),u=U(),tab=u.val+(S.vaga?e.vaga:0)+(S.hobby?e.hobby:0),fin=tab*(1-S.desc/100);
+  const ent=fin*S.pE/100,men=fin*S.pM/100,ref=fin*S.pR/100,ch=fin*S.pC/100;
+  const qM=Math.max(0,Math.round(S.qtdM)),qR=Math.max(0,Math.round(S.qtdR));
+  const rDates=[];for(let k=0;k<qR;k++)rDates.push(addM(S.ref1,S.refInt*k));
+  return{e,u,tab,fin,ent,men,ref,ch,qM,qR,mEach:qM?men/qM:0,rEach:qR?ref/qR:0,rDates,fimM:qM?addM(S.inicio,qM-1):''};
+}
 
 function renderEmp(){
   $('empSeg').innerHTML=EK.map(k=>`<button data-v="${esc(k)}" class="${k===S.emp?'on':''}">${esc(T[k].nome)}</button>`).join('');
   $('unit').innerHTML=E().units.map(u=>`<option value="${esc(u.n)}">${esc(u.n)} · ${esc(u.pos)} · ${esc(brl(u.val))}</option>`).join('');
   $('unit').value=U().n;
   $('vagaL').textContent='Vaga extra (+'+brl(E().vaga)+')';$('hobbyL').textContent='Hobby box (+'+brl(E().hobby)+')';
-  $('sub').textContent=`Tabela ${E().nome} vigente: ${E().vig}. Escolha a unidade — a condição da tabela vem pronta.`;
+  $('sub').textContent=`Tabela vigente: ${E().vig}`;
 }
-function fill(){
-  $('desc').value=pIn(S.desc);$('ent').value=S.entTipo==='pct'?pIn(S.ent):fmtIn(S.ent);$('entParc').value=S.entParc;
-  $('inicio').value=S.inicio;$('qtdM').value=S.qtdM;$('qtdR').value=S.qtdR;$('refPct').value=pIn(S.refPct);
-  $('ref1').value=S.ref1;$('refInt').value=S.refInt;$('chPct').value=pIn(S.chPct);$('valid').value=S.valid;
+function fill(skip){
+  const c=calc(),V={pE:'vE',pM:'vM',pR:'vR',pC:'vC'};
+  for(const k of PK){if(k!==skip)$(k).value=pIn(S[k]);if(V[k]!==skip)$(V[k]).value=fmtIn(c.fin*S[k]/100)}
+  if(skip!=='desc')$('desc').value=pIn(S.desc);
+  const mo=(a,b,cur)=>{const o=[];for(let m=a;m<=b;m=addM(m,1))o.push(m);if(cur&&!o.includes(cur))o.push(cur);o.sort();return o.map(m=>`<option value="${m}">${lab(m)}</option>`).join('')};
+  const fimO=addM(E().entrega,-1);
+  $('inicio').innerHTML=mo(nextM,fimO,S.inicio);$('inicio').value=S.inicio;
+  $('ref1').innerHTML=mo(nextM,fimO,S.ref1);$('ref1').value=S.ref1;
+  $('entParc').value=S.entParc;
+  if(skip!=='qtdM')$('qtdM').value=S.qtdM;if(skip!=='qtdR')$('qtdR').value=S.qtdR;if(skip!=='refInt')$('refInt').value=S.refInt;
   $('vaga').checked=S.vaga;$('hobby').checked=S.hobby;
-  for(const k of ['cliente','corNome','corImob','resp','cargo','fone'])$(k).value=S[k]||'';
-  for(const b of $('entTipo').children)b.classList.toggle('on',b.dataset.v===S.entTipo);
-  $('entLab').firstChild.textContent=S.entTipo==='pct'?'Entrada (%)':'Entrada (R$)';
+  for(const k of ['cliente','corNome','corImob','resp','cargo','fone'])if(k!==skip)$(k).value=S[k]||'';
 }
-function calc(){
-  const e=E(),u=U(),tab=u.val+(S.vaga?e.vaga:0)+(S.hobby?e.hobby:0),fin=tab*(1-S.desc/100);
-  const ent=S.entTipo==='pct'?fin*S.ent/100:S.ent,ch=fin*S.chPct/100;
-  const qR=Math.max(0,Math.round(S.qtdR)),ref=qR?fin*S.refPct/100:0,rEach=qR?ref/qR:0;
-  const qM=Math.max(0,Math.round(S.qtdM)),rest=fin-ent-ch-ref,men=qM?rest/qM:0;
-  const rDates=[];for(let k=0;k<qR;k++)rDates.push(addM(S.ref1,S.refInt*k));
-  return{e,u,tab,fin,ent,ch,qR,ref,rEach,qM,rest,men,rDates,fimM:qM?addM(S.inicio,qM-1):''};
-}
-function render(){
-  const c=calc(),P=v=>c.fin?v/c.fin*100:0,ep=+S.entParc;
+function render(skip){
+  fill(skip);
+  const c=calc(),ep=+S.entParc;
+  const rp=c.rDates.length?(c.qR>1?`${lab(c.rDates[0])} a ${lab(c.rDates[c.qR-1])}`:lab(c.rDates[0])):'';
+  $('dE').textContent=ep>1?`${ep}x de ${brl(c.ent/ep)}`:'No ato';
+  $('dM').textContent=c.qM?`${c.qM}x de ${brl(c.mEach)}`:'Sem mensais';
+  $('dR').textContent=c.qR?`${c.qR}x de ${brl(c.rEach)}`:'Sem reforços';
+  $('dC').textContent='Conclusão · '+lab(c.e.entrega);
+  $('tot').textContent=`${pct(S.pE+S.pM+S.pR+S.pC)} · ${brl(c.fin)}`;
   $('rUn').textContent=`${c.e.nome} · Unidade ${c.u.n} · ${c.u.pos}`;
   $('rFinal').textContent=brl(c.fin);
-  $('rTab').innerHTML=S.desc?`Tabela <s>${esc(brl(c.tab))}</s> · desconto ${esc(pct(S.desc))} (${esc(brl(c.tab-c.fin))})`:`Valor de tabela ${esc(brl(c.tab))}`;
-  const rp=c.rDates.length?(c.qR>1?`${lab(c.rDates[0])} a ${lab(c.rDates[c.qR-1])}`:lab(c.rDates[0])):'';
-  const parts=[
-    {n:'Entrada',v:c.ent,col:'var(--b4)',d:ep>1?`em ${ep}x de ${brl(c.ent/ep)}`:'no ato'},
-    {n:`${c.qM} mensais`,v:Math.max(0,c.rest),col:'var(--b3)',d:c.qM?`de ${brl(c.men)} · ${lab(S.inicio)} a ${lab(c.fimM)}`:'—'},
-    {n:`${c.qR} reforços`,v:c.ref,col:'var(--b2)',d:c.qR?`de ${brl(c.rEach)} · ${rp}`:'sem reforço'},
-    {n:'Chaves',v:c.ch,col:'#d1ccc7',d:`na conclusão · ${lab(c.e.entrega)}`}
-  ];
-  $('rBar').innerHTML=parts.map(p=>`<i style="width:${Math.max(0,P(p.v))}%;background:${p.col}"></i>`).join('');
-  $('rLeg').innerHTML=parts.map(p=>`<li><span class="dot" style="background:${p.col}"></span><span>${esc(p.n)} <small>${esc(p.d)}</small></span><b>${esc(brl(p.v))}<small>${esc(pct(P(p.v)))}</small></b></li>`).join('');
+  $('rTab').innerHTML=S.desc?`Tabela <s>${esc(brl(c.tab))}</s> · desconto de ${esc(pct(S.desc))}`:`Valor de tabela`;
+  const L=[
+    ['Entrada',ep>1?`${ep}x de ${brl(c.ent/ep)}`:'No ato',c.ent,S.pE],
+    [`${c.qM} mensais`,c.qM?`${brl(c.mEach)} · ${lab(S.inicio)} a ${lab(c.fimM)}`:'—',c.men,S.pM],
+    [`${c.qR} reforços`,c.qR?`${brl(c.rEach)} · ${rp}`:'—',c.ref,S.pR],
+    ['Saldo nas chaves',lab(c.e.entrega),c.ch,S.pC]
+  ].filter(r=>r[2]>0.004||r[0]==='Entrada');
+  $('rLines').innerHTML=L.map(r=>`<li><span>${esc(r[0])}<small>${esc(r[1])}</small></span><b>${esc(brl(r[2]))}<small>${esc(pct(r[3]))}</small></b></li>`).join('');
   const w=[];
-  if(c.rest<-0.005)w.push(`Entrada + reforços + chaves passam do valor da proposta em ${brl(-c.rest)}.`);
-  else if(!c.qM&&c.rest>0.005)w.push(`Sobram ${brl(c.rest)} sem mensais. Informe o nº de mensais.`);
+  if(S.pM>0.004&&!c.qM)w.push('Informe o nº de mensais.');
+  if(S.pR>0.004&&!c.qR)w.push('Informe o nº de reforços.');
   if(c.e.maxM&&c.qM>c.e.maxM)w.push(`Parcelamento direto máximo do ${c.e.nome}: ${c.e.maxM} meses.`);
-  if(c.qM&&c.fimM>=c.e.entrega)w.push(`Mensais passam da conclusão da obra (${lab(c.e.entrega)}).`);
+  if(c.qM&&c.fimM>=c.e.entrega)w.push(`As mensais passam da conclusão da obra (${lab(c.e.entrega)}).`);
   if(c.rDates.some(d=>d>=c.e.entrega))w.push(`Algum reforço cai depois da conclusão (${lab(c.e.entrega)}).`);
   $('rWarn').textContent=w.join(' ');$('rWarn').classList.toggle('on',w.length>0);
   $('unInfo').textContent=`Área privativa ${c.u.priv} · total c/ 1 vaga ${c.u.tot}`+(c.u.nota?` · ${c.u.nota}`:'');
   $('txt').textContent=texto(c,rp);
+  save();
 }
 function texto(c,rp){
   const d=S.valid?S.valid.split('-').reverse().join('/'):'',ep=+S.entParc,L=[];
-  L.push(`*Proposta — ${c.e.nome} · Unidade ${c.u.n}*`);
-  L.push(`${c.u.pos} · ${c.u.priv} privativos`);
+  L.push(`*Proposta — ${c.e.nome} · Unidade ${c.u.n}*`,`${c.u.pos} · ${c.u.priv} privativos`);
   if(S.cliente)L.push(`Cliente: ${S.cliente}`);
   L.push('',`Valor de tabela: ${brl(c.tab)}`);
   const ad=[S.vaga&&'vaga extra',S.hobby&&'hobby box'].filter(Boolean);if(ad.length)L.push(`(inclui ${ad.join(' e ')})`);
   if(S.desc)L.push(`Desconto: ${pct(S.desc)} (${brl(c.tab-c.fin)})`);
   L.push(`*Valor da proposta: ${brl(c.fin)}*`,'');
-  L.push(`> Entrada: ${brl(c.ent)}`+(ep>1?` em ${ep}x de ${brl(c.ent/ep)}`:''));
-  if(c.qM)L.push(`> ${c.qM} mensais de ${brl(c.men)} (${lab(S.inicio)} a ${lab(c.fimM)})`);
-  if(c.qR)L.push(`> ${c.qR} reforços de ${brl(c.rEach)} (${rp})`);
-  L.push(`> Chaves: ${brl(c.ch)} (${pct(S.chPct)}) — ${lab(c.e.entrega)}`,'');
-  L.push('_Saldo corrigido pelo CUB/SC até a entrega; depois, IGPM + 1%._');
+  L.push(`> Entrada: ${brl(c.ent)} (${pct(S.pE)})`+(ep>1?` em ${ep}x de ${brl(c.ent/ep)}`:''));
+  if(c.qM&&c.men>0.004)L.push(`> ${c.qM} mensais de ${brl(c.mEach)} (${lab(S.inicio)} a ${lab(c.fimM)})`);
+  if(c.qR&&c.ref>0.004)L.push(`> ${c.qR} reforços de ${brl(c.rEach)} (${rp})`);
+  if(c.ch>0.004)L.push(`> Chaves: ${brl(c.ch)} (${pct(S.pC)}) — ${lab(c.e.entrega)}`);
+  L.push('','_Saldo corrigido pelo CUB/SC até a entrega; depois, IGPM + 1%._');
   if(d)L.push(`Proposta válida até ${d}.`);
   const cor=[S.corNome,S.corImob].filter(Boolean).join(' · ');if(cor)L.push(`Corretor: ${cor}`);
   if(S.resp)L.push('',[S.resp,S.cargo].filter(Boolean).join(' — '));
   return L.join('\n');
 }
-function update(){save();render()}
 
 /* PDF */
 function pdfData(){
-  const c=calc(),P=v=>pct(c.fin?v/c.fin*100:0),ep=+S.entParc;
-  const rows=[{n:'Entrada',q:ep,unit:brl(c.ent/ep),venc:ep>1?'Ato e a cada 30 dias':'Ato',total:brl(c.ent),pct:P(c.ent)}];
-  if(c.qM)rows.push({n:'Mensais',q:c.qM,unit:brl(c.men),venc:`${lab(S.inicio)} a ${lab(c.fimM)}`,total:brl(c.rest),pct:P(c.rest)});
-  if(c.qR)rows.push({n:'Reforços',q:c.qR,unit:brl(c.rEach),venc:c.rDates.map(lab).join(', '),total:brl(c.ref),pct:P(c.ref)});
-  rows.push({n:'Saldo chaves',q:1,unit:brl(c.ch),venc:'Conclusão · '+lab(c.e.entrega),total:brl(c.ch),pct:P(c.ch)});
+  const c=calc(),P=v=>pct(c.fin?v/c.fin*100:0),ep=+S.entParc,rows=[];
+  rows.push({n:'Entrada',q:ep,unit:brl(c.ent/ep),venc:ep>1?'Ato e a cada 30 dias':'Ato',total:brl(c.ent),pct:P(c.ent)});
+  if(c.qM&&c.men>0.004)rows.push({n:'Mensais',q:c.qM,unit:brl(c.mEach),venc:`${lab(S.inicio)} a ${lab(c.fimM)}`,total:brl(c.men),pct:P(c.men)});
+  if(c.qR&&c.ref>0.004)rows.push({n:'Reforços',q:c.qR,unit:brl(c.rEach),venc:c.rDates.map(lab).join(', '),total:brl(c.ref),pct:P(c.ref)});
+  if(c.ch>0.004)rows.push({n:'Saldo chaves',q:1,unit:brl(c.ch),venc:'Conclusão · '+lab(c.e.entrega),total:brl(c.ch),pct:P(c.ch)});
   const n=new Date(),ad=[S.vaga&&`Vaga extra (${brl(c.e.vaga)})`,S.hobby&&`Hobby box (${brl(c.e.hobby)})`].filter(Boolean);
-  return{num:`${n.getFullYear()}${p2(n.getMonth()+1)}${p2(n.getDate())}-${p2(n.getHours())}${p2(n.getMinutes())}`,
-    data:n.toLocaleDateString('pt-BR'),vig:c.e.vig,cliente:{nome:S.cliente,tel:S.fone},corNome:S.corNome,corImob:S.corImob,
+  return{data:n.toLocaleDateString('pt-BR'),vig:c.e.vig,cliente:{nome:S.cliente,tel:S.fone},corNome:S.corNome,corImob:S.corImob,
     emp:c.e.nome,apto:c.u.n,pos:c.u.pos,priv:c.u.priv,tot:c.u.tot,nota:c.u.nota||'',adic:ad.join(' + '),
     entrega:lab(c.e.entrega),tab:brl(c.tab),desc:S.desc?`${pct(S.desc)} (${brl(c.tab-c.fin)})`:'',fin:brl(c.fin),rows,
     obs:c.e.obs,valid:S.valid?S.valid.split('-').reverse().join('/'):'',corretor:[S.resp,S.cargo].filter(Boolean).join(' — '),
-    ok:c.rest>=-0.005&&!(c.qM===0&&c.rest>0.005)};
+    ok:!(S.pM>0.004&&!c.qM)&&!(S.pR>0.004&&!c.qR)};
 }
-let DL=null;const pm={set textContent(v){$('pmsg').textContent=v;$('pmsg2').textContent=v}};
+let DL=null;const msg=v=>{$('pmsg').textContent=v;$('pmsg2').textContent=v};
 (async()=>{try{DL=window.claude&&window.claude.use?await window.claude.use('downloads'):null}catch(e){DL=null}})();
 async function gerar(){
   const d=pdfData();
-  if(!d.ok){pm.textContent='Ajuste o fluxo antes de gerar o PDF (veja o aviso acima).';return}
-  if(!S.valid){pm.textContent='Informe até quando a proposta é válida (campo “Proposta válida até”).';$('valid').focus();return}
-  if(!window.jspdf||!window.AviraPDF){pm.textContent='O gerador de PDF não carregou. Recarregue a página.';return}
-  const bs=[$('pdf'),$('pdf2')];bs.forEach(x=>x.disabled=true);pm.textContent='';
+  if(!d.ok){msg('Informe o nº de mensais e de reforços antes de gerar o PDF.');return}
+  if(!S.valid){msg('Informe até quando a proposta é válida (campo “Proposta válida até”).');$('valid').focus();return}
+  if(!window.jspdf||!window.AviraPDF){msg('O gerador de PDF não carregou. Recarregue a página.');return}
+  const bs=[$('pdf'),$('pdf2')];bs.forEach(x=>x.disabled=true);msg('');
   try{
     const doc=window.AviraPDF(window.jspdf.jsPDF,d,window.TIMBRE);
     const nome=('Proposta '+d.emp+' '+d.apto+(d.cliente.nome?' - '+d.cliente.nome:'')).replace(/[\\/:*?"<>|]/g,'').trim()+'.pdf';
     if(DL){await DL.save({filename:nome,data:doc.output('blob')})}
     else{const u=URL.createObjectURL(doc.output('blob')),a=document.createElement('a');a.href=u;a.download=nome;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000)}
-    pm.textContent='PDF salvo ✓';
+    msg('PDF salvo ✓');
   }catch(e){const k=e&&e.code;
-    pm.textContent=k==='declined'?'Download cancelado.':k==='rate_limited'?'Aguarde um instante e tente de novo.':k==='host_unavailable'?'Este app não salva arquivos. Abra no navegador ou no computador.':'Não foi possível gerar o PDF agora.'}
+    msg(k==='declined'?'Download cancelado.':k==='rate_limited'?'Aguarde um instante e tente de novo.':k==='host_unavailable'?'Este app não salva arquivos. Abra no navegador ou no computador.':'Não foi possível gerar o PDF agora.')}
   finally{bs.forEach(x=>x.disabled=false)}
 }
 $('pdf').addEventListener('click',gerar);$('pdf2').addEventListener('click',gerar);
 
 /* eventos */
-$('empSeg').addEventListener('click',e=>{const v=e.target.dataset.v;if(!v||v===S.emp)return;S.emp=v;S.un=E().units[0].n;S.vaga=S.hobby=false;padrao();renderEmp();fill();update()});
-$('unit').addEventListener('change',e=>{S.un=e.target.value;update()});
-for(const k of ['vaga','hobby'])$(k).addEventListener('change',e=>{S[k]=e.target.checked;update()});
-for(const k of ['desc','qtdM','qtdR','refPct','refInt','chPct'])$(k).addEventListener('input',e=>{S[k]=num(e.target.value);update()});
-$('qtdR').addEventListener('change',()=>{refAuto();fill();update()});
-$('ent').addEventListener('input',e=>{S.ent=num(e.target.value);update()});
-$('ent').addEventListener('blur',e=>{if(S.entTipo==='rs')e.target.value=fmtIn(S.ent)});
-for(const k of ['cliente','corNome','corImob','resp','cargo','valid','fone'])$(k).addEventListener('input',e=>{S[k]=e.target.value;update()});
-$('entParc').addEventListener('change',e=>{S.entParc=e.target.value;update()});
-$('entTipo').addEventListener('click',e=>{const v=e.target.dataset.v;if(!v||v===S.entTipo)return;
-  const c=calc();S.ent=v==='rs'?Math.round(c.ent*100)/100:Math.round((c.fin?c.ent/c.fin*100:0)*100)/100;S.entTipo=v;fill();update()});
-$('inicio').addEventListener('change',e=>{if(!e.target.value)return;S.inicio=e.target.value;S.qtdM=Math.max(0,diff(S.inicio,E().entrega));refAuto();fill();update()});
-$('ref1').addEventListener('change',e=>{if(e.target.value){S.ref1=e.target.value;update()}});
-$('reset').addEventListener('click',()=>{const keep=S.vaga||S.hobby;padrao();fill();update()});
+$('empSeg').addEventListener('click',e=>{const v=e.target.dataset.v;if(!v||v===S.emp)return;S.emp=v;S.un=E().units[0].n;S.vaga=S.hobby=false;padrao();renderEmp();render()});
+$('unit').addEventListener('change',e=>{S.un=e.target.value;render()});
+for(const k of ['vaga','hobby'])$(k).addEventListener('change',e=>{S[k]=e.target.checked;render()});
+$('desc').addEventListener('input',e=>{S.desc=Math.max(0,Math.min(100,num(e.target.value)));render('desc')});
+for(const k of PK){
+  $(k).addEventListener('input',e=>{setPct(k,num(e.target.value));render(k)});
+  const v='v'+k[1];
+  $(v).addEventListener('input',e=>{const f=calc().fin;setPct(k,f?num(e.target.value)/f*100:0);render(v)});
+}
+for(const id of ['desc','pE','pM','pR','pC','vE','vM','vR','vC','qtdM','qtdR','refInt'])$(id).addEventListener('blur',()=>render());
+$('qtdM').addEventListener('input',e=>{S.qtdM=Math.max(0,Math.round(num(e.target.value)));if(!S.qtdM&&S.pM)setPct('pM',0);refAuto();render('qtdM')});
+$('qtdR').addEventListener('input',e=>{S.qtdR=Math.max(0,Math.round(num(e.target.value)));if(!S.qtdR&&S.pR)setPct('pR',0);refAuto();render('qtdR')});
+$('refInt').addEventListener('input',e=>{S.refInt=Math.max(1,Math.round(num(e.target.value))||1);render('refInt')});
+$('ref1').addEventListener('change',e=>{if(e.target.value){S.ref1=e.target.value;render()}});
+$('inicio').addEventListener('change',e=>{if(!e.target.value)return;S.inicio=e.target.value;S.qtdM=Math.max(0,diff(S.inicio,E().entrega));refAuto();render()});
+$('entParc').addEventListener('change',e=>{S.entParc=e.target.value;render()});
+for(const k of ['cliente','corNome','corImob','resp','cargo','fone'])$(k).addEventListener('input',e=>{S[k]=e.target.value;render(k)});
+$('valid').addEventListener('input',e=>{S.valid=e.target.value});
+$('reset').addEventListener('click',()=>{padrao();render()});
 $('copy').addEventListener('click',async()=>{const t=$('txt').textContent;let ok=false;
   try{await navigator.clipboard.writeText(t);ok=true}catch(e){
     try{const r=document.createRange();r.selectNodeContents($('txt'));const s=getSelection();s.removeAllRanges();s.addRange(r);ok=document.execCommand('copy')}catch(_){}}
-  const tt=$('toast');tt.textContent=ok?'Copiado ✓':'Selecione o texto abaixo e copie';tt.classList.add('on');setTimeout(()=>tt.classList.remove('on'),1800)});
+  const tt=$('toast');tt.textContent=ok?'Copiado ✓':'Abra “Texto para WhatsApp” e copie';tt.classList.add('on');setTimeout(()=>tt.classList.remove('on'),1800)});
 
-renderEmp();fill();render();
+renderEmp();render();
 }
 </script>
 </body>
